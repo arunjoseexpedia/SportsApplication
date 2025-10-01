@@ -3,7 +3,9 @@ import React from 'react';
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <h1>Welcome to Sports Application</h1>
+      <header className="dashboard-header">
+        <h1>Sports Application</h1>
+      </header>
     </div>
   );
 };
