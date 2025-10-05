@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { AppBar, Typography, Toolbar, IconButton, Button, Box, Switch, Drawer, List, ListItem, ListItemText, Divider, Menu, MenuItem, ListItemIcon, Avatar, Paper, Grid, Container } from '@mui/material';
+import { AppBar, Typography, Toolbar, IconButton, Button, Box, Switch, Drawer, List, ListItem, ListItemText, Divider, Menu, MenuItem, ListItemIcon, Avatar, Paper, Grid, Container, Card, CardContent } from '@mui/material';
 import { useTheme } from '../contexts/ThemeContext';
+import Football from './Football';
+import Cricket from './Cricket';
+import Profile from './Profile';
 
 const Dashboard = () => {
   const { darkMode, toggleTheme } = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [user, setUser] = useState({ role: 'user' }); // Default role
+  const [currentPage, setCurrentPage] = useState('home'); // Track current page
 
   const handleMenuClick = () => {
     setDrawerOpen(true);
@@ -27,6 +31,11 @@ const Dashboard = () => {
   const handleRoleChange = (newRole) => {
     setUser({ role: newRole });
     handleUserMenuClose();
+  };
+
+  const handleNavigationClick = (page) => {
+    setCurrentPage(page.toLowerCase());
+    setDrawerOpen(false);
   };
 
   return (
@@ -144,18 +153,18 @@ const Dashboard = () => {
         </Box>
         <Divider />
           <List>
-            <ListItem button>
+            <ListItem button onClick={() => handleNavigationClick('home')}>
               <ListItemText primary="Home" />
             </ListItem>
             {user.role === 'admin' && (
-              <ListItem button>
+              <ListItem button onClick={() => handleNavigationClick('profile')}>
                 <ListItemText primary="Profile" />
               </ListItem>
             )}
-            <ListItem button>
+            <ListItem button onClick={() => handleNavigationClick('football')}>
               <ListItemText primary="Football" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => handleNavigationClick('cricket')}>
               <ListItemText primary="Cricket" />
             </ListItem>
           </List>
@@ -163,98 +172,105 @@ const Dashboard = () => {
       </Drawer>
       <Toolbar /> {/* This creates space for the fixed AppBar */}
       
-      {/* Dashboard Content */}
-      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-        <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
-          {/* First Row */}
-          <Grid item xs={12} sm={6} md={6} lg={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 3, 
-                height: 180, 
-                display: 'flex', 
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: '100%'
-              }}
-            >
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Orders and Delivery
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
-                Manage and track orders and delivery information. View status and schedules.
-              </Typography>
-            </Paper>
+      {/* Page Content */}
+      {currentPage === 'home' && (
+        <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+          <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
+            {/* First Row */}
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: 3, 
+                  height: 180, 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  width: '100%'
+                }}
+              >
+                <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                  Orders and Delivery
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
+                  Manage and track orders and delivery information. View status and schedules.
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: 3, 
+                  height: 180, 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  width: '100%'
+                }}
+              >
+                <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                  Returns and Delivery
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
+                  Handle returns and exchanges. Track return shipments and manage refunds.
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            {/* Second Row */}
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: 3, 
+                  height: 180, 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  width: '106%', // Increase width slightly
+                  ml: -3 // Move card slightly to the left
+                }}
+              >
+                <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                  General Information
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
+                  Access announcements, policy updates, and general application information.
+                </Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <Paper 
+                elevation={3} 
+                sx={{ 
+                  p: 3, 
+                  height: 180, 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  width: '103%',
+                  ml: 1 // Move card slightly to the right
+                }}
+              >
+                <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
+                  Technical
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
+                  Technical support, system maintenance, and troubleshooting resources.
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
-          
-          <Grid item xs={12} sm={6} md={6} lg={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 3, 
-                height: 180, 
-                display: 'flex', 
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: '100%'
-              }}
-            >
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Returns and Delivery
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
-                Handle returns and exchanges. Track return shipments and manage refunds.
-              </Typography>
-            </Paper>
-          </Grid>
-          
-          {/* Second Row */}
-          <Grid item xs={12} sm={6} md={6} lg={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 3, 
-                height: 180, 
-                display: 'flex', 
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: '106%', // Increase width slightly
-                ml: -3 // Move card slightly to the left
-              }}
-            >
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
-                General Information
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
-                Access announcements, policy updates, and general application information.
-              </Typography>
-            </Paper>
-          </Grid>
-          
-          <Grid item xs={12} sm={6} md={6} lg={6}>
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                p: 3, 
-                height: 180, 
-                display: 'flex', 
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: '103%',
-                ml: 1 // Move card slightly to the right
-              }}
-            >
-              <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Technical
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
-                Technical support, system maintenance, and troubleshooting resources.
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      )}
+
+      {/* Other Pages */}
+      {currentPage === 'football' && <Football />}
+      {currentPage === 'cricket' && <Cricket />}
+      {currentPage === 'profile' && <Profile />}
     </Box>
   );
 };
