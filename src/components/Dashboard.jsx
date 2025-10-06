@@ -4,6 +4,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import Football from './Football';
 import Cricket from './Cricket';
 import Profile from './Profile';
+import OrdersDelivery from './OrdersDelivery';
 
 const Dashboard = () => {
   const { darkMode, toggleTheme } = useTheme();
@@ -161,6 +162,9 @@ const Dashboard = () => {
             <ListItem button onClick={() => handleNavigationClick('home')}>
               <ListItemText primary="Home" />
             </ListItem>
+            <ListItem button onClick={() => handleNavigationClick('orders')}>
+              <ListItemText primary="Orders & Delivery" />
+            </ListItem>
             {user.role === 'admin' && (
               <ListItem button onClick={() => handleNavigationClick('profile')}>
                 <ListItemText primary="Profile" />
@@ -191,8 +195,16 @@ const Dashboard = () => {
                   display: 'flex', 
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  width: '100%'
+                  width: '100%',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    elevation: 6,
+                    transform: 'translateY(-2px)',
+                    backgroundColor: 'action.hover'
+                  }
                 }}
+                onClick={() => handleNavigationClick('orders')}
               >
                 <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
                   Orders and Delivery
@@ -276,6 +288,7 @@ const Dashboard = () => {
       {currentPage === 'football' && <Football />}
       {currentPage === 'cricket' && <Cricket />}
       {currentPage === 'profile' && <Profile />}
+      {currentPage === 'orders' && <OrdersDelivery />}
     </Box>
   );
 };

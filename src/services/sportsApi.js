@@ -15,8 +15,8 @@ const mockWomensWorldCupData = {
       status: 'Live',
       score: 'AUS 245/4 (45.2 overs)',
       venue: 'Melbourne Cricket Ground',
-      date: '2024-10-06',
-      tournament: "Women's Cricket World Cup 2024"
+      date: '2025-10-06',
+      tournament: "Women's Cricket World Cup 2025"
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const mockWomensWorldCupData = {
       score: 'Match starts in 2 hours',
       venue: 'Lord\'s Cricket Ground',
       date: '2024-10-06',
-      tournament: "Women's Cricket World Cup 2024"
+      tournament: "Women's Cricket World Cup 2025"
     },
     {
       id: 3,

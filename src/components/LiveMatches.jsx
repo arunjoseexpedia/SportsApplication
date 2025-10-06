@@ -84,7 +84,7 @@ const LiveMatches = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
-        🏏 Women's Cricket World Cup 2024
+        🏏 Women's Cricket World Cup 2025
       </Typography>
 
       <Tabs value={tabValue} onChange={handleTabChange} sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
