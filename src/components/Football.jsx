@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Paper, Typography, Grid, Card, CardContent, Divider, Box } from '@mui/material';
 import PremierLeagueLive from './PremierLeagueLive';
+import FootballBall from './FootballBall';
 
 const Football = () => {
+  const [currentView, setCurrentView] = useState('main'); // 'main' or 'footballBall'
+
+  const handleFootballBallClick = () => {
+    setCurrentView('footballBall');
+  };
+
+  const handleBackToMain = () => {
+    setCurrentView('main');
+  };
+
+  if (currentView === 'footballBall') {
+    return <FootballBall onBack={handleBackToMain} />;
+  }
+
   return (
     <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', mb:3 }}>
@@ -11,7 +26,19 @@ const Football = () => {
       
       <Grid container spacing={3}>
         <Grid item xs={12} md={6} lg={3}>
-          <Card elevation={3} sx={{ height: 280 }}>
+          <Card 
+            elevation={3} 
+            sx={{ 
+              height: 280,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 6
+              }
+            }}
+            onClick={handleFootballBallClick}
+          >
             <CardContent sx={{ textAlign: 'center' }}>
               <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
                 Football Ball
