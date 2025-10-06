@@ -5,6 +5,7 @@ import Football from './Football';
 import Cricket from './Cricket';
 import Profile from './Profile';
 import OrdersDelivery from './OrdersDelivery';
+import ReturnsDelivery from './ReturnsDelivery';
 
 const Dashboard = () => {
   const { darkMode, toggleTheme } = useTheme();
@@ -63,7 +64,19 @@ const Dashboard = () => {
           >
             ☰
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', mr: 4 }}>
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              fontWeight: 'bold', 
+              mr: 4,
+              cursor: 'pointer',
+              '&:hover': {
+                opacity: 0.8
+              }
+            }}
+            onClick={() => handleNavigationClick('home')}
+          >
             Sports Sales Application
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
@@ -175,6 +188,9 @@ const Dashboard = () => {
             <ListItem button onClick={() => handleNavigationClick('orders')}>
               <ListItemText primary="Orders & Delivery" />
             </ListItem>
+            <ListItem button onClick={() => handleNavigationClick('returns')}>
+              <ListItemText primary="Returns & Delivery" />
+            </ListItem>
             {user.role === 'admin' && (
               <ListItem button onClick={() => handleNavigationClick('profile')}>
                 <ListItemText primary="Profile" />
@@ -234,8 +250,16 @@ const Dashboard = () => {
                   display: 'flex', 
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  width: '100%'
+                  width: '100%',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    elevation: 6,
+                    transform: 'translateY(-2px)',
+                    backgroundColor: 'action.hover'
+                  }
                 }}
+                onClick={() => handleNavigationClick('returns')}
               >
                 <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
                   Returns and Delivery
@@ -299,6 +323,7 @@ const Dashboard = () => {
       {currentPage === 'cricket' && <Cricket />}
       {currentPage === 'profile' && <Profile />}
       {currentPage === 'orders' && <OrdersDelivery />}
+      {currentPage === 'returns' && <ReturnsDelivery />}
     </Box>
   );
 };
