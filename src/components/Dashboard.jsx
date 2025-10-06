@@ -129,7 +129,12 @@ const Dashboard = () => {
                 <ListItemText>Switch to User</ListItemText>
               </MenuItem>
               <Divider />
-              
+              <MenuItem onClick={handleUserMenuClose}>
+                <ListItemIcon>
+                 
+                </ListItemIcon>
+                <ListItemText>Logout</ListItemText>
+              </MenuItem>
             </Menu>
           </Box>
          

@@ -4,7 +4,7 @@ import { Container, Paper, Typography, Grid, Card, CardContent } from '@mui/mate
 const Football = () => {
   return (
     <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', mb:3 }}>
         Football
       </Typography>
       
@@ -53,14 +53,22 @@ const Football = () => {
                 width: '120px', 
                 height: '120px', 
                 margin: '20px auto', 
-                backgroundColor: '#f0f0f0', 
+                
                 borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '2px solid #ddd'
+               
               }}>
-                <span style={{ fontSize: '48px' }}>👟</span>
+                <img 
+                  src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/107683/01/sv01/fnd/IND/fmt/png/ULTRA-5-ULTIMATE-FG-Football-Boots" 
+                  alt="Nike Football Boots" 
+                  style={{ 
+                    width: '90px', 
+                    height: '90px', 
+                    objectFit: 'contain' 
+                  }} 
+                />
               </div>
               <Typography variant="body2" color="text.secondary">
                 High-quality football boots for optimal performance on the pitch.
@@ -79,7 +87,7 @@ const Football = () => {
                 width: '160px', 
                 height: '120px', 
                 margin: '20px auto', 
-                backgroundColor: '#f0f0f0', 
+                 
                 borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
@@ -112,7 +120,7 @@ const Football = () => {
                 width: '160px', 
                 height: '120px', 
                 margin: '20px auto', 
-                backgroundColor: '#f0f0f0', 
+                
                 borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
