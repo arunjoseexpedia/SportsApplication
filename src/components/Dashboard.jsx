@@ -49,12 +49,22 @@ const Dashboard = () => {
             color="inherit"
             aria-label="menu"
             onClick={handleMenuClick}
-            sx={{ mr: 2 }}
+            sx={{ 
+              mr: 2,
+              '&:focus': {
+                outline: 'none',
+                boxShadow: 'none'
+              },
+              '&:focus-visible': {
+                outline: 'none',
+                boxShadow: 'none'
+              }
+            }}
           >
             ☰
           </IconButton>
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', mr: 4 }}>
-            Sports Application
+            Sports Sales Application
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>

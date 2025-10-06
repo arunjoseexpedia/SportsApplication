@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Paper, Typography, Grid, Card, CardContent } from '@mui/material';
+import { Container, Paper, Typography, Grid, Card, CardContent, Divider, Box } from '@mui/material';
+import PremierLeagueLive from './PremierLeagueLive';
 
 const Football = () => {
   return (
@@ -145,6 +146,12 @@ const Football = () => {
         </Grid>
         
       </Grid>
+      
+      {/* Premier League Live Data Section */}
+      <Box sx={{ mt: 6 }}>
+        <Divider sx={{ mb: 4 }} />
+        <PremierLeagueLive />
+      </Box>
       
     </Container>
   );
